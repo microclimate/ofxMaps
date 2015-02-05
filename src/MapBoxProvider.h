@@ -77,14 +77,24 @@ public:
             
             std::stringstream url;
             
-            url << "https://api.tiles.mapbox.com/v4/" << mapId << "/"; // for mapbox terrain profile
-            url << (int)coordinate.getZoom() << "/" << (int)coordinate.getColumn();
-            url << "/" << (int)coordinate.getRow() << ".png";
-            url << "?access_token=" << access_token << "&amp;update=i5pys"; // mapbox access token
+            if (!mapId) {
+                
+                url << "https://api.tiles.mapbox.com/v4/mapbox.streets/";
+                url << (int)coordinate.getZoom() << "/" << (int)coordinate.getColumn();
+                url << "/" << (int)coordinate.getRow() << ".png";
+                url << "?access_token=" << access_token << "&amp;update=i5pys";
+                
+            } else {
             
-            //https://api.tiles.mapbox.com/v4/mapbox.run-bike-hike/16/11441/26459@2x.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6IlhHVkZmaW8ifQ.hAMX5hSW-QnTeRCMAy9A8Q&update=i5pys
+                url << "https://api.tiles.mapbox.com/v4/" << mapId << "/";
+                url << (int)coordinate.getZoom() << "/" << (int)coordinate.getColumn();
+                url << "/" << (int)coordinate.getRow() << ".png";
+                url << "?access_token=" << access_token << "&amp;update=i5pys";
             
+            }
+
             urls.push_back(url.str());
+            
         }
         
         return urls;
@@ -96,7 +106,7 @@ public:
     }
     
 protected:
-    string access_token;
+    string access_token = "pk.eyJ1IjoibWFwYm94IiwiYSI6IlhHVkZmaW8ifQ.hAMX5hSW-QnTeRCMAy9A8Q&update=i5shw";
     string mapId;
     
     
