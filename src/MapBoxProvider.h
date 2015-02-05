@@ -77,7 +77,7 @@ public:
             
             std::stringstream url;
             
-            if (!mapId) {
+            if (mapId == "") {
                 
                 url << "https://api.tiles.mapbox.com/v4/mapbox.streets/";
                 url << (int)coordinate.getZoom() << "/" << (int)coordinate.getColumn();
@@ -106,8 +106,9 @@ public:
     }
     
 protected:
+    
     string access_token = "pk.eyJ1IjoibWFwYm94IiwiYSI6IlhHVkZmaW8ifQ.hAMX5hSW-QnTeRCMAy9A8Q&update=i5shw";
-    string mapId;
+    string mapId = "";
     
     
 };
