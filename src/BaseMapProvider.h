@@ -49,7 +49,7 @@ public:
 
     virtual ofVec2d getTileSize() const
     {
-        return ofVec2f(getTileWidth(), getTileHeight());
+        return ofVec2d(getTileWidth(), getTileHeight());
     }
 
     virtual int getMinZoom() const = 0;

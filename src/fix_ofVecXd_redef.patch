@@ -1,0 +1,119 @@
+From 74c04b0ee9cd7a849ee48dce87b540edfbc35440 Mon Sep 17 00:00:00 2001
+From: Austin Hill <austin@sparkaerial.com>
+Date: Tue, 27 Jan 2015 19:39:05 -0800
+Subject: [PATCH] Updated to use ofVec3d and ofVec2d, must already have headers
+ in project
+
+---
+ src/BaseMapProvider.h | 2 +-
+ src/GeoLocation.h     | 4 ++--
+ src/Map.cpp           | 2 +-
+ src/Map.h             | 4 ++--
+ src/TileCoordinate.h  | 6 +++---
+ src/Types.h           | 8 ++++----
+ 6 files changed, 13 insertions(+), 13 deletions(-)
+
+diff --git a/src/BaseMapProvider.h b/src/BaseMapProvider.h
+index 463dafb..08b6cad 100755
+--- a/src/BaseMapProvider.h
++++ b/src/BaseMapProvider.h
+@@ -49,7 +49,7 @@ public:
+ 
+     virtual ofVec2d getTileSize() const
+     {
+-        return ofVec2f(getTileWidth(), getTileHeight());
++        return ofVec2d(getTileWidth(), getTileHeight());
+     }
+ 
+     virtual int getMinZoom() const = 0;
+diff --git a/src/GeoLocation.h b/src/GeoLocation.h
+index 2063e63..2623cfc 100755
+--- a/src/GeoLocation.h
++++ b/src/GeoLocation.h
+@@ -49,6 +49,6 @@ public:
+ 
+ protected:
+     // TODO: These should be doubles in the future.
+-    float& latitude;
+-    float& longitude;
++    double& latitude;
++    double& longitude;
+ };
+diff --git a/src/Map.cpp b/src/Map.cpp
+index 6698aef..a413296 100644
+--- a/src/Map.cpp
++++ b/src/Map.cpp
+@@ -32,7 +32,7 @@ void Map::setup(BaseMapProvider::SharedPtr provider, int width, int height)
+ 	_provider = provider;
+ 
+     // The width / height of the map.
+-    _size = ofVec2f(width, height);
++    _size = ofVec2d(width, height);
+ 
+     // Half the world width, height at zoom 0
+     _centerTileCoordinate = TileCoordinate(0.5, 0.5, 0);
+diff --git a/src/Map.h b/src/Map.h
+index dd37446..c1bd07e 100755
+--- a/src/Map.h
++++ b/src/Map.h
+@@ -108,7 +108,7 @@ protected:
+     ///< \brief The Map tile Provider.
+     BaseMapProvider::SharedPtr _provider;
+ 
+-    ofVec2f _size; ///< \brief Map Size.
++    ofVec2d _size; ///< \brief Map Size.
+ 
+     TileCoordinate _centerTileCoordinate; ///< \brief Pan and anchor coordinate.
+ 
+@@ -129,7 +129,7 @@ protected:
+ 	// for loading tiles from the inside first
+ 	//QueueSorter queueSorter;
+ 
+-    ofVec2f _prevMouse;
++    ofVec2d _prevMouse;
+ 
+ //    void updateMapPostion(const ofVec2f& vec, unsigned duration = 1000, unsigned delay = 100, ofxEasingType easing = easeIn);
+ //
+diff --git a/src/TileCoordinate.h b/src/TileCoordinate.h
+index 1089916..950aa07 100755
+--- a/src/TileCoordinate.h
++++ b/src/TileCoordinate.h
+@@ -61,8 +61,8 @@ public:
+ 
+ protected:
+     // TODO: These should be doubles in the future.
+-    float& column;
+-	float& row;
+-	float& zoom;
++    double& column;
++	double& row;
++	double& zoom;
+ 
+ };
+diff --git a/src/Types.h b/src/Types.h
+index 71bae40..71c390a 100644
+--- a/src/Types.h
++++ b/src/Types.h
+@@ -27,15 +27,15 @@
+ 
+ 
+ #include <vector>
+-#include "ofVec2f.h"
+-#include "ofVec3f.h"
++#include "ofVec2d.h"
++#include "ofVec3d.h"
+ 
+ 
+ class GeoLocation;
+ 
+ 
+-typedef ofVec2f ofVec2d; ///< For now, we pretend to use double precision.
+-typedef ofVec3f ofVec3d; ///< For now, we pretend to use double precision.
++//typedef ofVec2f ofVec2d; ///< For now, we pretend to use double precision.
++//typedef ofVec3f ofVec3d; ///< For now, we pretend to use double precision.
+ 
+ 
+ typedef std::vector<GeoLocation> GeoPolyline;
+-- 
+1.9.3 (Apple Git-50)
+

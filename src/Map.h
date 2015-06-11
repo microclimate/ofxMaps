@@ -108,7 +108,7 @@ protected:
     ///< \brief The Map tile Provider.
     BaseMapProvider::SharedPtr _provider;
 
-    ofVec2f _size; ///< \brief Map Size.
+    ofVec2d _size; ///< \brief Map Size.
 
     TileCoordinate _centerTileCoordinate; ///< \brief Pan and anchor coordinate.
 
@@ -129,7 +129,7 @@ protected:
 	// for loading tiles from the inside first
 	//QueueSorter queueSorter;
 
-    ofVec2f _prevMouse;
+    ofVec2d _prevMouse;
 
 //    void updateMapPostion(const ofVec2f& vec, unsigned duration = 1000, unsigned delay = 100, ofxEasingType easing = easeIn);
 //

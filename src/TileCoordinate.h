@@ -61,8 +61,8 @@ public:
 
 protected:
     // TODO: These should be doubles in the future.
-    float& column;
-	float& row;
-	float& zoom;
+    double& column;
+	double& row;
+	double& zoom;
 
 };

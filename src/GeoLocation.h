@@ -49,6 +49,6 @@ public:
 
 protected:
     // TODO: These should be doubles in the future.
-    float& latitude;
-    float& longitude;
+    double& latitude;
+    double& longitude;
 };

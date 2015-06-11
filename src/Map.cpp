@@ -32,7 +32,7 @@ void Map::setup(BaseMapProvider::SharedPtr provider, int width, int height)
 	_provider = provider;
 
     // The width / height of the map.
-    _size = ofVec2f(width, height);
+    _size = ofVec2d(width, height);
 
     // Half the world width, height at zoom 0
     _centerTileCoordinate = TileCoordinate(0.5, 0.5, 0);
@@ -553,7 +553,12 @@ void Map::processQueue()
     {
 		const TileCoordinate& coord = *(_queue.begin());
 
+        // check for cached tiles here. if it doesn't exist, load the other ish
+        
+        
         std::vector<std::string> urls = _provider->getTileUrls(coord);
+        
+        
 
         if (!urls.empty())
         {

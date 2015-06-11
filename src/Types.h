@@ -27,15 +27,15 @@
 
 
 #include <vector>
-#include "ofVec2f.h"
-#include "ofVec3f.h"
+#include "ofVec2d.h"
+#include "ofVec3d.h"
 
 
 class GeoLocation;
 
 
-typedef ofVec2f ofVec2d; ///< For now, we pretend to use double precision.
-typedef ofVec3f ofVec3d; ///< For now, we pretend to use double precision.
+//typedef ofVec2f ofVec2d; ///< For now, we pretend to use double precision.
+//typedef ofVec3f ofVec3d; ///< For now, we pretend to use double precision.
 
 
 typedef std::vector<GeoLocation> GeoPolyline;
